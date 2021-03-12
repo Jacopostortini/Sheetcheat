@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cheat Sheet</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/static/temp/styles/normalize.css">
+    <link rel="stylesheet" href="/static/temp/styles/styles.css">
+    <link rel="stylesheet" href="/static/temp/signup_css.css">
+
+  <link rel="stylesheet" href="temp/signup_css.css">
+</head>
+<body>
+  <script src="{{ url_for('static',filename='script/copied.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/signup.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/constants.js')}}"></script>
+
+
+  <header class="header header--bg">
+    <div class="container header--wrapper">
+      <h1 class="header__title"><span class="header__title--light">CHEAT</span> SHEET</h1>
+
+    </div>
+  </header>
+
+  <section class="signup_section">
+    <div class="signup_container">
+        <h2 id="signup_title">Create your account</h2>
+
+        <div id="username_container" class="signup_details_container">
+            <h3>Username</h3>
+            <br>
+            <div id="username_input_container" class="box_choice">
+                <input type="text" id="username_input" class="input" placeholder="Your username">
+        </div>
+
+        </div>
+
+    <div id="email_container" class="signup_details_container">
+            <h3>Email</h3>
+            <br>
+
+            <div id="email_input_container" class="box_choice ">
+         <input type="email" id="email_input" class="input" placeholder="example@example.com">
+
+        </div>
+
+        </div>
+
+    <div id="password_container" class="signup_details_container">
+        <h3>Password</h3>
+        <br>
+        <div id="password_input_container" class="box_choice ">
+         <input type="password" id="password_input" class="input" placeholder="Password">
+
+    </div>
+
+    </div>
+      <div id="button_container">
+        <button class="black_background_button" onclick="signup()">SIGN UP</button>    
+        <p id="fill_in_all">Fill in all forms, please</p>
+      </div>
+    </div>
+  </section>
+
+
+
+</body>
+</html>

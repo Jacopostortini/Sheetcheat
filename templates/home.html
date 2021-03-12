@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cheat Sheet</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel= "stylesheet" type= "text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='temp/styles/styles.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='temp/home_css.css') }}">
+
+
+
+  </head>
+
+    <section id="popup_background_filter" style="position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display:none; z-index: 1;">
+        <section id="login_popup" class="login_popup">
+
+            <a class="close_popup"  onclick="close_login_popup()">&times;</a>
+
+
+    <div class="login_container">
+        <h2 id="login_title">Log in to your account</h2>
+        <div id="email_container" class="login_details_container">
+            <h3>Email</h3>
+            <br>
+            <div id="email_input_container" class="box_choice input_box_choice">
+                <input type="email" id="email_input" class="login_input" placeholder="example@example.com">
+        </div>
+
+        </div>
+    <div id="password_container" class="login_details_container">
+        <h3>Password</h3>
+        <br>
+        <div id="password_input_container" class="box_choice input_box_choice">
+            <input type="password" id="password_input" class="login_input" placeholder="Password">
+    </div>
+
+    </div>
+    <div id="button_container">
+        <button id="popup_login_button" class="black_background_button" onclick="login()">LOG IN</button>
+        </div>
+        <p class="ask_to_signup" >Don't have an account? <a href="signup_page.html">Sign up</a></p>
+
+        <div id="forgot_password">
+
+            <a href="/forgot_password.html">Forgot password?</a>
+            </div>
+    </div>
+
+  </section>
+    </section>
+<body>
+  <script src="{{ url_for('static',filename='script/copied.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/constants.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/cookies_management.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/login.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/style_section.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/option_section.js')}}"></script>
+  <script src="{{ url_for('static',filename='script/main_script.js')}}"></script>
+
+  <header class="header header--bg">
+    <div class="container header--wrapper">
+      <h1 class="header__title"><span class="header__title--light">CHEAT</span> SHEET</h1>
+      <p class="header__paragraph">This powerful tool is designed for generating texts based on your own handwriting. You just need to type your text and our algorithm will assemble your single letters to generate a handwritten text. If you want to save your handwriting just create an account or log in to access your data whenever you want from any device. </p>
+      <p id="username_label"></p>
+      <img src="{{ url_for('static',filename='html_images/user.png')}}" class="user_icon" onclick="window.location.href='user.html'">
+      <a class="black_background_button" href="#login_section" id="login_button" onclick="login_popup()">LOG IN</a>
+      <a class="black_background_button" href="#" id="signup_button" onclick="window.location.href='signup_page.html' ">SIGN UP</a>
+
+    </div>
+  </header>
+
+
+
+  <section class="upload_picture_section">
+    <!-- NON METTO A POSTO PERCHE' E' DA CAMBIARE TUTTO TANTO -->
+    <div class="container">
+      <div class="page-section text-center">
+
+        <h2 class="page-section__title">Pick default style</h2>
+
+          <div class="styles_container">
+
+              <div id="style_image_container1" class="style_image_container" onclick="style_picker.selectObject('style_image_container1')">
+          <img src="static/html_images/styles/style.png" height="100px" width="400px">
+              </div>
+              <div id="style_image_container2" class="style_image_container" onclick="style_picker.selectObject('style_image_container2')">
+                  <img src="static/html_images/styles/style 1.png" height="100px" width="400px">
+              </div>
+              <div id="style_image_container3" class="style_image_container" onclick="style_picker.selectObject('style_image_container3')">
+                  <img src="static/html_images/styles/style 2.png" height="100px" width="400px">
+              </div>
+              <div id="style_image_container4" class="style_image_container" onclick="style_picker.selectObject('style_image_container4')">
+                  <img src="static/html_images/styles/style 3.png" height="100px" width="400px">
+              </div>
+
+          <h3>You are not logged in. If you wish to use your own handwriting you must login and upload your images.</h3>
+
+          </div>
+
+        </div>
+    </div>
+  </section>
+
+
+  <section class="write_text_section">
+    <div class="container">
+      <div class="page-section text-center">
+        <h2 class="page-section__title page-section__title--white">Write your text</h2>
+        <p class="page-section__paragraph page-section__paragraph--white">Insert the text you want to convert</p>
+
+        <textarea id="textarea" rows="8" cols="20">
+            </textarea>
+
+      </div>
+    </div>
+  </section>
+    <button id="useless" style="visibility: collapse; position: relative; top: 70px"></button>
+  <section id="choose_settings_section" class="choose_settings_section" >
+    <div class="container" >
+      <div class="page-section" id="settings">
+          <div id="preview">
+              <button id="default_options_button" class="white_background_button" style="float: right" onclick="defaultOptions()">DEFAULT OPTIONS</button>
+              <h2 class="page-section__title">Choose settings</h2>
+              <div id="paper_preview">
+                  <img  id=preview_image src="{{ url_for('static',filename='html_images/testo1.png') }}">
+              </div>
+          </div>
+
+
+
+              <div id="all-attributes_container">
+
+                <div class="attributes_container">
+                  <p id="letter_color_label" class="attributes_text">Letter color</p>
+
+                    <div id="letter_color" class="attributes_input"  >
+
+
+                        <div id= "red_letter_color_box" class="box_choice " onclick="letter_color.selectObject('red_letter_color_box')">
+                          <div class="colored_square" style="background-color: red" >
+                            </div>
+                        </div>
+
+                        <div id= "black_letter_color_box" class="box_choice " onclick="letter_color.selectObject('black_letter_color_box')">
+                            <div class="colored_square" style="background-color: black">
+                            </div>
+                        </div>
+
+                        <div id= "blue_letter_color_box" class="box_choice " onclick="letter_color.selectObject('blue_letter_color_box')">
+                          <div class="colored_square" style="background-color: blue">
+                            </div>
+                        </div>
+
+                        <div id= "add_letter_color_box" class="box_choice">
+                            <div id = "new_letter_color" class="number_square">
+                                  <label for="new_letter_color_picker">+</label>
+                              <input id="new_letter_color_picker" type="color" value="#fff" hidden onchange="letter_color.selectObject('add_letter_color_box')">
+                            </div>
+                        </div>
+
+                      </div>
+                  </div>
+
+                <div class="attributes_container">
+
+                  <p class="attributes_text">Letter size</p>
+
+                    <div id="letter_size_choices_container" class="attributes_input">
+
+                            <div id="3_letter_size_box" class="box_choice" onclick="letter_size.selectObject('3_letter_size_box')">
+                              <div class="number_square">3</div>
+                            </div>
+
+                            <div id="4_letter_size_box" class="box_choice" onclick="letter_size.selectObject('4_letter_size_box')">
+                                <div class="number_square">4</div>
+                            </div>
+
+                            <div id="5_letter_size_box" class="box_choice" onclick="letter_size.selectObject('5_letter_size_box')">
+                              <div class="number_square" >5</div>
+                            </div>
+
+                            <div id="add_letter_size_box" class="box_choice" onclick="letter_size.selectObject('add_letter_size_box')" onfocus="letter_size_on_mouse_over()">
+                              <p><i class="arrow_up" id="up_letter_size" onclick="letter_size.increase()"></i></p>
+                                <div id="new_letter_size" class="number_square add_number">+</div>
+                              <p><i class="arrow_down" id="down_letter_size" onclick="letter_size.decrease()"></i></p>
+                            </div>
+
+                      </div>
+                  </div>
+
+                <div class="attributes_container">
+                  <p class="attributes_text">Letter distance</p>
+                    <div id="letter_distance_choices_container" class="attributes_input">
+
+
+                        <div id= "1_letter_distance_box" class="box_choice" onclick="letter_distance.selectObject('1_letter_distance_box')">
+                          <div  class="number_square">1</div>
+                        </div>
+
+                        <div id= "2_letter_distance_box" class="box_choice" onclick="letter_distance.selectObject('2_letter_distance_box')">
+                            <div class="number_square">2</div>
+                        </div>
+
+                        <div id= "3_letter_distance_box" class="box_choice" onclick="letter_distance.selectObject('3_letter_distance_box')">
+                          <div class="number_square" >3</div>
+                        </div>
+
+                        <div id= "add_letter_distance_box" class="box_choice" onclick="letter_distance.selectObject('add_letter_distance_box')">
+                            <p><i class="arrow_up" id="up_letter_distance" onclick="letter_distance.increase()"></i></p>
+                          <div id="new_letter_distance" class="number_square  add_number">+</div>
+                            <p><i class="arrow_down" id="down_letter_distance" onclick="letter_distance.decrease()"></i></p>
+                        </div>
+                      </div>
+                  </div>
+
+                <div class="attributes_container">
+                  <p class="attributes_text">Letter gap</p>
+
+                    <div id="letter_gap_choices_container" class="attributes_input">
+                        <div id="0_letter_gap_box" class="box_choice" onclick="letter_gap.selectObject('0_letter_gap_box')">
+                          <div class="number_square">0</div>
+                        </div>
+
+                        <div id="1_letter_gap_box" class="box_choice" onclick="letter_gap.selectObject('1_letter_gap_box')">
+                            <div class="number_square">1</div>
+                        </div>
+
+                        <div id="2_letter_gap_box" class="box_choice" onclick="letter_gap.selectObject('2_letter_gap_box')">
+                          <div class="number_square" >2</div>
+                        </div>
+
+                        <div id="add_letter_gap_box" class="box_choice" onclick="letter_gap.selectObject('add_letter_gap_box')">
+                            <p><i class="arrow_up" id="up_letter_gap" onclick="letter_gap.increase()"></i></p>
+                          <div id="new_letter_gap" class="number_square  add_number">+</div>
+                            <p><i class="arrow_down" id="down_letter_gap" onclick="letter_gap.decrease()"></i></p>
+                        </div>
+
+                      </div>
+                  </div>
+
+                <div class="attributes_container">
+                  <p class="attributes_text">Paper type</p>
+
+                    <div id="paper_type_choices_container" class="attributes_input">
+
+                            <div id="plain_paper_type_box" class="box_choice rectangle_paper_type" onclick="paper_type.selectObject('plain_paper_type_box')">
+                              <div class="paper_type_text">Plain</div>
+                            </div>
+
+                            <div id="squares_paper_type_box" class="box_choice rectangle_paper_type" onclick="paper_type.selectObject('squares_paper_type_box')">
+                                <div class="paper_type_text">Squares</div>
+                            </div>
+
+                            <div id="lines_paper_type_box" class="box_choice rectangle_paper_type" onclick="paper_type.selectObject('lines_paper_type_box')">
+                              <div class="paper_type_text" >Lines</div>
+                            </div>
+                      </div>
+                  </div>
+
+                <div class="attributes_container">
+                  <p class="attributes_text">Has holes</p>
+                    <div id="has_holes_choices_container" class="attributes_input">
+
+                        <div id="has_holes_box" class="box_choice" onclick="has_holes.selectObject('has_holes_box')">
+                          <div class="number_square" >✓</div>
+                        </div>
+
+                        <div id="has_not_holes_box" class="box_choice" onclick="has_holes.selectObject('has_not_holes_box')">
+                          <div class="number_square">x</div>
+                        </div>
+                        </div>
+                      </div>
+
+
+                <div class="attributes_container">
+                  <p class="attributes_text">Paper color</p>
+
+                  <div id="paper_color_choices_container" class="attributes_input">
+
+                    <div id="white_paper_color_box" class="box_choice" onclick="paper_color.selectObject('white_paper_color_box')">
+                      <div class="square" style="background-color: white"></div>
+                    </div>
+                  <div id= "add_paper_color_box" class="box_choice">
+                      <div class="number_square" >
+                        <label for="new_paper_color_picker">+</label>
+                        <input type="color" id="new_paper_color_picker" hidden onchange="paper_color.selectObject('add_paper_color_box')">
+                      </div>
+                    </div>
+
+                    </div>
+                </div>
+
+                  <div class="attributes_container">
+                    <p class="attributes_text">Paper size</p>
+                      <div id="paper_size_choices_container" class="attributes_input">
+                      <div class="size_row">
+                          <div class="rectangle_paper_size">
+                            <div class="paper_size">Width</div>
+                          </div>
+                         <div class="rectangle_paper_size_dots">
+                            <div class="paper_size_dots">:</div>
+                        </div>
+                          <div class="rectangle_paper_size size_input">
+                            <input id="paper_width_input_box" class="paper_size_input" type="number" value="210" onchange="onOptionChange()">
+                          </div>
+                          </div>
+
+                        <div class="size_row">
+                          <div class="rectangle_paper_size">
+                            <div class="paper_size">Height</div>
+                          </div>
+
+                            <div class="rectangle_paper_size_dots">
+                            <div class="paper_size_dots">:</div>
+                        </div>
+                        <div class="rectangle_paper_size size_input">
+                            <input id="paper_height_input_box" class="paper_size_input" type="number" value="297" onchange="onOptionChange()">
+                          </div>
+                    </div>
+                </div>
+          </div>
+
+                  <div class="attributes_container">
+                    <p class="attributes_text">Line color</p>
+
+                      <div id="line_color_choices_container" class="attributes_input">
+
+                          <div id="blue_line_color_box" class="box_choice" onclick="line_color.selectObject('blue_line_color_box')">
+                            <div class="colored_square" style="background-color: blue"></div>
+                          </div>
+
+                          <div id="black_line_color_box" class="box_choice" onclick="line_color.selectObject('black_line_color_box')">
+                              <div class="colored_square" style="background-color: black"> </div>
+                          </div>
+
+                          <div id="add_line_color_box" class="box_choice">
+                              <div class="number_square">
+                                <label for="new_line_color_picker">+</label>
+                                <input type="color" id="new_line_color_picker" hidden onchange="line_color.selectObject('add_line_color_box')">
+                              </div>
+                          </div>
+                      </div>
+
+                    </div>
+
+                  <div class="attributes_container">
+                    <p class="attributes_text">Square dimension</p>
+                      <div id="square_dimension_choices_container" class="attributes_input">
+
+                              <div id="4_square_dimension_box" class="box_choice" onclick="square_dimension.selectObject('4_square_dimension_box')">
+                                <div class="number_square">4</div>
+                              </div>
+
+                              <div id="5_square_dimension_box" class="box_choice" onclick="square_dimension.selectObject('5_square_dimension_box')">
+                                  <div class="number_square">5</div>
+                              </div>
+
+                              <div id="add_square_dimension_box" class="box_choice" onclick="square_dimension.selectObject('add_square_dimension_box')">
+                                <p><i class="arrow_up" id="up_square_dimension" onclick="square_dimension.increase()"></i></p>
+                                <div id="new_square_dimension" class="number_square  add_number">+</div>
+                                <p><i class="arrow_down" id="down_square_dimension" onclick="square_dimension.decrease()"></i></p>
+                              </div>
+                          </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="generate_section">
+    <div class="container">
+    <a href="#teamCarousel"><button id="generate_button" class="white_background_button" style="float: right" onclick="generate()">GENERATE</button></a>
+    <a href="#useless"><button id="erase_button" class="white_background_button" style="float: right" onclick="eraseOptions()">ERASE</button></a>
+    </div>
+  </section>
+
+
+
+<section id="output_section" class="output_section">
+    <div class="container">
+      <div class="page-section text-center">
+        <div class="row">
+          <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+            <div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+              <!-- Wrapper for slides USALO PER DARE LE FOTO ALLA FINE -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img class="img-responsive" src="static/html_images/testo0.png" alt="" width="50%">
+                  <div class="carousel-caption">
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img class="img-responsive" src="static/html_images/testo1.png" alt="" width="50%">
+                  <div class="carousel-caption">
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img class="img-responsive" src="static/html_images/testo2.png" alt="" width="50%">
+                  <div class="carousel-caption">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#teamCarousel" data-slide="prev">
+                <img class="carousel-control-left__img" src="{{ url_for('static',filename='assets/images/team-slider-left-marker.png') }}" alt="">
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#teamCarousel" data-slide="next">
+                <img class="carousel-control-right__img" src="{{ url_for('static',filename='assets/images/team-slider-right-marker.png') }}" alt="">
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--
+<section class="download">
+    <div class="container">
+      <button class="button__subscribe">DOWNLOAD</button>
+
+    </div>
+  </section>
+    -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var $videoSrc = $("#video").attr("src");
+
+      $('#myModal').on('shown.bs.modal', function (e) {
+        $("#video").attr('src',$videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1" );
+      });
+
+      $('#myModal').on('hide.bs.modal', function (e) {
+        $("#video").attr('src',$videoSrc);
+      });
+  });
+
+  </script>
+
+</body>
+</html>
